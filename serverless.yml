@@ -47,18 +47,18 @@ resources:
           Ref: WebAppS3Bucket
         PolicyDocument:
           Statement:
-            # - Sid: 'AllowCloudFrontAccessIdentity'
-            - Sid: 'PublicReadGetObject'
+            - Sid: 'AllowCloudFrontAccessIdentity'
+#            - Sid: 'PublicReadGetObject'
               Effect: Allow
               Action: s3:GetObject
               Resource: arn:aws:s3:::${self:custom.s3BucketName}/*
-              # Principal:
-              #   AWS:
-              #     Fn::Join:
-              #       - ' '
-              #       - - 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity'
-              #         - !Ref OriginAccessIdentity
-              Principal: "*"
+              Principal:
+               AWS:
+                 Fn::Join:
+                   - ' '
+                   - - 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity'
+                     - !Ref OriginAccessIdentity
+#              Principal: "*"
 
     OriginAccessIdentity:
       Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
@@ -72,7 +72,7 @@ resources:
       Properties:
         DistributionConfig:
           Origins:
-            # - DomainName: ${self:custom.s3BucketName}.s3.${self:provider.region}.amazonaws.com
+#            - DomainName: ${self:custom.s3BucketName}.s3.${self:provider.region}.amazonaws.com
             - DomainName: !GetAtt WebAppS3Bucket.RegionalDomainName
               ## An identifier for the origin which must be unique within the distribution
               Id: myS3Origin
