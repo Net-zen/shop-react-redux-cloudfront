@@ -49,7 +49,7 @@ export default function Products() {
             <CardMedia
               style={{backgroundSize:'contain'}}
               className={classes.cardMedia}
-              image={product.imageUrl}
+              image={product.image_url}
               title="Image title"
             />
             <CardContent className={classes.cardContent}>
