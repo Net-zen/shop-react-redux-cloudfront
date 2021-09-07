@@ -45,8 +45,12 @@ export default function Header() {
   return (
     <AppBar position="relative">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          <Link className={classes.homeLink} to="/">My Store!</Link>
+        <Typography variant="h6" className={classes.title} style={{display:"flex"}}>
+          <img
+            style={{height:'50px'}}
+            alt={'nba logo'}
+            src='https://images-for-nba-jerseys-store.s3.eu-west-1.amazonaws.com/img/logo.png'/>
+          <Link style={{marginLeft:'10px',alignSelf:'center'}} className={classes.homeLink} to="/">NBA Jerseys Store</Link>
         </Typography>
 
         {auth && (
